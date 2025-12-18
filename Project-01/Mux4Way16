@@ -1,4 +1,4 @@
-module Or8way (input wire [15:0] a, input wire [15:0] b, input wire [15:0] c, 
+module Mux4Way16 (input wire [15:0] a, input wire [15:0] b, input wire [15:0] c, 
                 input wire [15:0] d, input wire [1:0] sel, output reg [15:0] y);
   always @(*) begin
   case (sel)
