@@ -1,0 +1,17 @@
+module Demux4Way16 (input wire [15:0] a, output reg [15:0] b, output reg [15:0] c, 
+                output reg [15:0] d, input wire [1:0] sel, output reg [15:0] y);
+  always @(*) begin
+  b = 16'd0;
+  c = 16'd0;
+  d = 16'd0;
+  y = 16'd0;
+  case (sel)
+    2'b00 : b =a;
+    2'b01 : c=a;
+    2'b10 : d =a;
+    2'b11 : y=a;
+    
+    endcase
+    end
+endmodule
+    
