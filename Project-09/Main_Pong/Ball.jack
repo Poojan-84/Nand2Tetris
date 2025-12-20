@@ -1,0 +1,53 @@
+class Ball {
+
+    field int x, y;
+    field int dx, dy;
+
+    constructor Ball new() {
+        let x = 250;
+        let y = 120;
+        let dx = 3;
+        let dy = 3;
+
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+        return this;
+    }
+
+    method void move(Paddle paddle) {
+
+        // erase old ball
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+
+        let x = x + dx;
+        let y = y + dy;
+
+        // wall bounce
+        if (x < 0 | x > 507) {
+            let dx = -dx;
+        }
+
+        if (y < 0) {
+            let dy = -dy;
+        }
+
+        // paddle bounce
+        if (y > paddle.top() - 6) {
+            if (x > paddle.left() & x < paddle.right()) {
+                let dy = -dy;
+            }
+        }
+
+        // reset if missed
+        if (y > 255) {
+            let x = 250;
+            let y = 120;
+        }
+
+        // draw new ball
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + 4, y + 4);
+
+        return;
+    }
+}
