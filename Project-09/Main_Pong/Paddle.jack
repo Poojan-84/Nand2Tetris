@@ -1,0 +1,54 @@
+class Paddle {
+
+    field int x, y;
+    field int width;
+
+    constructor Paddle new() {
+        let x = 240;
+        let y = 230;
+        let width = 60;
+
+        do Screen.drawRectangle(x, y, x + width, y + 5);
+        return this;
+    }
+
+    method void move() {
+        var int key;
+
+        let key = Keyboard.keyPressed();
+
+        // erase old paddle
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + 5);
+
+        if (key = 130) {          // LEFT arrow
+            if (x > 5) {
+                let x = x - 5;
+            }
+        } else {
+            if (key = 132) {      // RIGHT arrow
+                if (x < 450) {
+                    let x = x + 5;
+                }
+            }
+        }
+
+        // draw new paddle
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + width, y + 5);
+
+        return;
+    }
+
+    method int left() {
+        return x;
+    }
+
+    method int right() {
+        return x + width;
+    }
+
+    method int top() {
+        return y;
+    }
+}
